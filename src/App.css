@@ -1,5 +1,9 @@
+#root {
+  height: inherit; }
+
 .App {
-  text-align: center; }
+  text-align: center;
+  height: 100%; }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

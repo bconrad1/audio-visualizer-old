@@ -1,0 +1,177 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 22px; }
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none; }
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #ffffff;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .slider {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px); }
+
+input {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px; }
+
+.slider.round:before {
+  border-radius: 50%; }
+
+body, html {
+  height: 100%; }
+
+body {
+  background: linear-gradient(296deg, #d73196, #9431d7, #31b8d7, #31d755, #f0ca2f, #f34e1c);
+  background-size: 1200% 1200%;
+  -webkit-animation: AnimationName 40s ease infinite;
+  -moz-animation: AnimationName 40s ease infinite;
+  animation: AnimationName 40s ease infinite; }
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 83%; }
+  50% {
+    background-position: 100% 18%; }
+  100% {
+    background-position: 0% 83%; } }
+
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 83%; }
+  50% {
+    background-position: 100% 18%; }
+  100% {
+    background-position: 0% 83%; } }
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 83%; }
+  50% {
+    background-position: 100% 18%; }
+  100% {
+    background-position: 0% 83%; } }
+
+.App {
+  height: inherit; }
+
+.canvas-container {
+  height: calc(100% - 50px);
+  display: flex;
+  align-items: center; }
+
+.audio-canvas {
+  display: inherit;
+  margin: 0 auto;
+  padding: 0 25px;
+  width: 75%;
+  height: 100%; }
+
+.music-player-wrapper {
+  display: none; }
+
+.header-play-bar {
+  height: 50px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.5); }
+
+.play-btn {
+  /*color: #F59300;*/
+  color: #eeeeee;
+  font-size: 28px;
+  padding-top: 11px; }
+
+.grow {
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0); }
+  .grow:hover {
+    color: white;
+    cursor: pointer;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1); }
+
+.seconds-container {
+  display: table;
+  height: 100%; }
+
+.vis-select-container {
+  position: absolute;
+  right: 25px;
+  height: 50px;
+  display: table;
+  padding-top: 13px; }
+
+.vis-select {
+  color: white;
+  font-size: 20px;
+  display: table-cell; }
+
+.vis-select-text {
+  color: white;
+  font-size: 20px;
+  font-family: 'Inconsolata', monospace;
+  display: inline-block; }
+
+.switch-container {
+  display: table-cell;
+  width: 48px;
+  padding: 0 10px; }
+
+.seconds-text {
+  color: #eeeeee;
+  font-family: 'Inconsolata', monospace;
+  display: table-cell;
+  font-size: 18px;
+  vertical-align: middle; }
+
+.seek-container {
+  display: table-cell;
+  vertical-align: middle; }
+
+.seek-input {
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0 25px; }

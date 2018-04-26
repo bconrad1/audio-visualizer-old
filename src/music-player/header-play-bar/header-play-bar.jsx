@@ -1,7 +1,9 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Play from 'react-icons/lib/fa/play-circle';
 import Pause from 'react-icons/lib/fa/pause-circle';
+import Circle from 'react-icons/lib/fa/circle-thin';
+import Bars from 'react-icons/lib/fa/bars';
 
 class HeaderPlayBar extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ class HeaderPlayBar extends Component {
       if (seconds < 10) { seconds = '0' + seconds; }
       return minutes + ':' + seconds;
     }
-      return '00:00';
+    return '00:00';
   };
 
   render() {
@@ -36,9 +38,8 @@ class HeaderPlayBar extends Component {
         <div className={'header-container'}>
           <div className={'header-play-bar'}>
             {this.props.playing ? <Pause onClick={this.props.onPlayPause}
-                                         className={'play-btn'}/> : <Play
-                onClick={this.props.onPlayPause} className={'play-btn'}/>}
-
+                                         className={'play-btn grow'}/> : <Play
+                onClick={this.props.onPlayPause} className={'play-btn grow'}/>}
             <input
                 className={'seek-input'}
                 type='range' min={0} max={1} step='any'
@@ -51,6 +52,18 @@ class HeaderPlayBar extends Component {
               <div
                   className={'seconds-text'}>{this.state.secondsFormatted}</div>
             </div>
+            <div className={'vis-select-container'}>
+              <Bars className={'vis-select vis-bars'}
+                    onClick={this.props.onVisChange}/>
+              <div className={'switch-container'}>
+                <label className='switch'>
+                  <input type='checkbox'/>
+                  <span className='slider round'/>
+                </label>
+              </div>
+              <Circle className={'vis-select vis-circle'}
+                      onClick={this.props.onVisChange}/>
+            </div>
           </div>
         </div>
 
@@ -59,7 +72,9 @@ class HeaderPlayBar extends Component {
 }
 
 HeaderPlayBar.propTypes = {
+  currentVis: PropTypes.string,
   onPlayPause: PropTypes.func,
+  onVisChange: PropTypes.func,
   played: PropTypes.number,
   playedSeconds: PropTypes.number,
   playing: PropTypes.bool,

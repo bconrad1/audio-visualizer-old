@@ -3,7 +3,9 @@ import '../static/styles/appStyle.scss';
 import ReactPlayer from 'react-player';
 import TestSong from '../static/walkonby.mp3';
 import TestSong2 from '../static/jungle.mp3';
+import TestSong3 from '../static/test3.mp3';
 import HeaderPlayBar from './header-play-bar/header-play-bar';
+import Visualizer from '../visualizer/visualizer';
 
 class MusicPlayer extends Component {
   constructor(props) {
@@ -12,7 +14,8 @@ class MusicPlayer extends Component {
       playing: false,
       duration: 0,
       played: 0,
-      seeking: false
+      seeking: false,
+      currentVis: 'circle'
     };
   }
 
@@ -37,6 +40,13 @@ class MusicPlayer extends Component {
     this.setState({duration});
   };
 
+  onChangeVis = () => {
+    this.setState({
+      currentVis: this.state.currentVis === 'circle' ? 'bars' : 'circle'
+    });
+    console.log('newVis', this.state.currentVis);
+  };
+
   onProgress = state => {
     if (!this.state.seeking) {
       this.setState({
@@ -56,10 +66,13 @@ class MusicPlayer extends Component {
     let seek = this.onSeekChange.bind(this);
     let seekUp = this.onSeekMouseUp.bind(this);
     let seekDown = this.onSeekMouseDown.bind(this);
+    let visChanged = this.onChangeVis.bind(this);
 
     return (
         <Fragment>
           <HeaderPlayBar onPlayPause={playPause}
+                         onVisChange={visChanged}
+                         currentVis={this.state.currentVis}
                          seek={seek}
                          playing={this.state.playing}
                          played={this.state.played}
@@ -68,7 +81,7 @@ class MusicPlayer extends Component {
                          seekMouseUp={seekUp}/>
           <div className='music-player-wrapper'>
             <ReactPlayer
-                url={TestSong2}
+                url={TestSong3}
                 playing={this.state.playing}
                 onDuration={this.onDuration}
                 onSeek={e => null}
@@ -76,6 +89,7 @@ class MusicPlayer extends Component {
                 ref={this.ref}
             />
           </div>
+          <Visualizer currentVis={this.state.currentVis}/>
         </Fragment>
     );
   }
