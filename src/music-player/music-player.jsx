@@ -81,7 +81,7 @@ class MusicPlayer extends Component {
                          seekMouseUp={seekUp}/>
           <div className='music-player-wrapper'>
             <ReactPlayer
-                url={TestSong3}
+                url={TestSong}
                 playing={this.state.playing}
                 onDuration={this.onDuration}
                 onSeek={e => null}

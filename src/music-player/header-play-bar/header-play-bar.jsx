@@ -52,18 +52,6 @@ class HeaderPlayBar extends Component {
               <div
                   className={'seconds-text'}>{this.state.secondsFormatted}</div>
             </div>
-            <div className={'vis-select-container'}>
-              <Bars className={'vis-select vis-bars'}
-                    onClick={this.props.onVisChange}/>
-              <div className={'switch-container'}>
-                <label className='switch'>
-                  <input type='checkbox'/>
-                  <span className='slider round'/>
-                </label>
-              </div>
-              <Circle className={'vis-select vis-circle'}
-                      onClick={this.props.onVisChange}/>
-            </div>
           </div>
         </div>
 
@@ -72,9 +60,7 @@ class HeaderPlayBar extends Component {
 }
 
 HeaderPlayBar.propTypes = {
-  currentVis: PropTypes.string,
   onPlayPause: PropTypes.func,
-  onVisChange: PropTypes.func,
   played: PropTypes.number,
   playedSeconds: PropTypes.number,
   playing: PropTypes.bool,

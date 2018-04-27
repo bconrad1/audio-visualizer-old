@@ -14,18 +14,8 @@ class Visualizer extends Component {
   }
 
   componentDidMount() {
-    this.updateWindowDimensions();
-    //window.addEventListener('resize', this.updateWindowDimensions);
     this.initVisualization();
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions = () => {
-    this.setState({width: window.innerWidth, height: window.innerHeight});
-  };
 
   initVisualization = () => {
     let context = new AudioContext();
@@ -53,9 +43,7 @@ class Visualizer extends Component {
 
     function renderBars() {
       let freqData = new Uint8Array(analyser.frequencyBinCount);
-
       requestAnimationFrame(renderBars);
-
       analyser.getByteFrequencyData(freqData);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = '#ffffff';
@@ -64,8 +52,8 @@ class Visualizer extends Component {
         let barX = i * 4;
         let barWidth = 2;
         let barHeight = -(freqData[i] / 0.7);
-          ctx.fillRect(barX, canvas.height / 2, barWidth, barHeight);
-          ctx.fillRect(barX, ((canvas.height / 2) - 1), barWidth,
+        ctx.fillRect(barX, canvas.height / 2, barWidth, barHeight);
+        ctx.fillRect(barX, ((canvas.height / 2) - 1), barWidth,
             (barHeight * -1));
       }
     }
@@ -73,6 +61,7 @@ class Visualizer extends Component {
     function renderCircle() {
       let freqData = new Uint8Array(analyser.frequencyBinCount);
       requestAnimationFrame(renderCircle);
+
       analyser.getByteFrequencyData(freqData);
       let maxBinCount = freqData.length;
 
@@ -87,7 +76,7 @@ class Visualizer extends Component {
 
       switch (true) {
         case (width >= 1200):
-          radius = -600;
+          radius = -500;
           barLength = 0.35;
           innerRadius = (-radius - 100);
           innerHeight = 1;
@@ -110,16 +99,24 @@ class Visualizer extends Component {
         let value = freqData[i];
         ctx.fillStyle = '#ffffff';
         let barHeight = -value / barLength;
-        ctx.fillRect(0, radius, 4, barHeight);
+        ctx.fillRect(0, radius, 6, barHeight);
         ctx.rotate((180 / 128) * Math.PI / 180);
       }
 
-      //inner base
-      let innerValue = Math.floor(freqData[15]);
+      //inner base- Freq ~200hz
+      // let innerValue = Math.floor(freqData[7]);
+      // for (let i = 0; i < maxBinCount; i++) {
+      //   let valIn = -innerValue / innerHeight;
+      //
+      //   ctx.rotate(-(180 / 128) * Math.PI / 180);
+      //   ctx.fillRect(5, innerRadius, 4, -innerValue / innerHeight);
+      // }
+
       for (let i = 0; i < maxBinCount; i++) {
         ctx.rotate(-(180 / 128) * Math.PI / 180);
-        ctx.fillRect(5, innerRadius, 4, -innerValue / innerHeight);
+        ctx.fillRect(0, radius, 4, 5);
       }
+      ctx.rotate(Math.PI / 180);
       ctx.restore();
     }
 
@@ -139,6 +136,7 @@ class Visualizer extends Component {
                       width={window.innerWidth}
                       height={window.innerHeight}
                       className={'audio-canvas'}/>
+
             </div>
           </div>
         </Fragment>
