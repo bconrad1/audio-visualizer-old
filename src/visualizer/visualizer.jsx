@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {Component, Fragment} from 'react';
 import '../static/styles/appStyle.css';
 import PropTypes from 'prop-types';
@@ -76,14 +77,15 @@ class Visualizer extends Component {
 
       switch (true) {
         case (width >= 1200):
-          radius = -500;
-          barLength = 0.35;
+          radius = -400;
+          barLength = 0.5;
           innerRadius = (-radius - 100);
           innerHeight = 1;
           break;
         case (width > 750 && width < 1200):
-          radius = -400;
-          barLength = 0.5;
+          radius = -300;
+          barLength = 0.6;
+          barLength = 0.6;
           innerRadius = (-radius - 50);
           innerHeight = 1.5;
           break;
@@ -97,26 +99,17 @@ class Visualizer extends Component {
       //all freq
       for (let i = 0; i < maxBinCount; i++) {
         let value = freqData[i];
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = '#fffae6';
         let barHeight = -value / barLength;
-        ctx.fillRect(0, radius, 6, barHeight);
+        ctx.fillRect(0, radius, 4, barHeight);
         ctx.rotate((180 / 128) * Math.PI / 180);
       }
 
-      //inner base- Freq ~200hz
-      // let innerValue = Math.floor(freqData[7]);
-      // for (let i = 0; i < maxBinCount; i++) {
-      //   let valIn = -innerValue / innerHeight;
-      //
-      //   ctx.rotate(-(180 / 128) * Math.PI / 180);
-      //   ctx.fillRect(5, innerRadius, 4, -innerValue / innerHeight);
-      // }
-
-      for (let i = 0; i < maxBinCount; i++) {
-        ctx.rotate(-(180 / 128) * Math.PI / 180);
-        ctx.fillRect(0, radius, 4, 5);
-      }
-      ctx.rotate(Math.PI / 180);
+      ctx.beginPath();
+      ctx.arc(0, 0, -radius, 0, 2 * Math.PI);
+      ctx.strokeStyle = '#fff5cc';
+      ctx.lineWidth = 2;
+      ctx.stroke();
       ctx.restore();
     }
 

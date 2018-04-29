@@ -15,6 +15,7 @@ class MusicPlayer extends Component {
       duration: 0,
       played: 0,
       seeking: false,
+      volume: 1,
       currentVis: 'circle'
     };
   }
@@ -78,6 +79,7 @@ class MusicPlayer extends Component {
                          played={this.state.played}
                          playedSeconds={this.state.playedSeconds}
                          seekMouseDown={seekDown}
+                         volume={this.state.volume}
                          seekMouseUp={seekUp}/>
           <div className='music-player-wrapper'>
             <ReactPlayer
@@ -86,6 +88,7 @@ class MusicPlayer extends Component {
                 onDuration={this.onDuration}
                 onSeek={e => null}
                 onProgress={this.onProgress}
+                volume={this.state.volume}
                 ref={this.ref}
             />
           </div>
@@ -96,3 +99,4 @@ class MusicPlayer extends Component {
 }
 
 export default MusicPlayer;
+

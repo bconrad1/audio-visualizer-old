@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Play from 'react-icons/lib/fa/play-circle';
 import Pause from 'react-icons/lib/fa/pause-circle';
-import Circle from 'react-icons/lib/fa/circle-thin';
-import Bars from 'react-icons/lib/fa/bars';
+import VolumeBar from './volume-bar';
 
 class HeaderPlayBar extends Component {
   constructor(props) {
@@ -52,6 +51,7 @@ class HeaderPlayBar extends Component {
               <div
                   className={'seconds-text'}>{this.state.secondsFormatted}</div>
             </div>
+            <VolumeBar volume={this.props.volume}/>
           </div>
         </div>
 
@@ -66,7 +66,8 @@ HeaderPlayBar.propTypes = {
   playing: PropTypes.bool,
   seek: PropTypes.func,
   seekMouseDown: PropTypes.func,
-  seekMouseUp: PropTypes.func
+  seekMouseUp: PropTypes.func,
+  volume: PropTypes.number
 };
 
 export default HeaderPlayBar;
