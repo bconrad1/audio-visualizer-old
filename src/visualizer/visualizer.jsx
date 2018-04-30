@@ -78,21 +78,20 @@ class Visualizer extends Component {
       switch (true) {
         case (width >= 1200):
           radius = -400;
-          barLength = 0.5;
+          barLength = 0.6;
           innerRadius = (-radius - 100);
           innerHeight = 1;
           break;
         case (width > 750 && width < 1200):
           radius = -300;
-          barLength = 0.6;
-          barLength = 0.6;
+          barLength = 0.7;
           innerRadius = (-radius - 50);
           innerHeight = 1.5;
           break;
         default:
           radius = -200;
-          barLength = 0.7;
-          innerRadius = (-radius - 25);
+          barLength = 0.8;
+          innerRadius = (-radius - 25);0
           innerHeight = 2;
           break;
       }

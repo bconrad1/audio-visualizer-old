@@ -23,7 +23,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 500px;
   background: #ffffff;
   cursor: pointer;
-  margin-top: -7px; }
+  margin-top: -6px; }
 
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
@@ -44,7 +44,7 @@ input[type=range]::-ms-thumb {
 /*TRACK*/
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 2px;
+  height: 4px;
   cursor: pointer;
   background: #eeeeee;
   border-radius: 1.3px; }
@@ -54,105 +54,87 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 input[type=range]::-moz-range-track {
   width: 100%;
-  height: 2px;
+  height: 4px;
   cursor: pointer;
   background: #eeeeee;
   border-radius: 1.3px; }
 
 input[type=range]::-ms-track {
   width: 100%;
-  height: 2px;
+  height: 4px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
   border-width: 16px 0;
   color: transparent; }
 
-.volume-container input[type=range] {
-  height: 20px;
-  -webkit-appearance: none;
-  margin: 10px 0;
-  width: 100%; }
-
-.volume-container input[type=range]:focus {
-  outline: none; }
-
-.volume-container input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 14px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #50555C;
-  background: #50555C;
-  border-radius: 14px;
-  border: 0px solid #000000; }
-
-.volume-container input[type=range]::-webkit-slider-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 14px;
-  width: 40px;
-  border-radius: 12px;
-  background: #529DE1;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: 0px; }
-
-.volume-container input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #50555C; }
-
-.volume-container input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 14px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #50555C;
-  background: #50555C;
-  border-radius: 14px;
-  border: 0px solid #000000; }
-
-.volume-container input[type=range]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 14px;
-  width: 40px;
-  border-radius: 12px;
-  background: #529DE1;
-  cursor: pointer; }
-
-.volume-container input[type=range]::-ms-track {
-  width: 100%;
-  height: 14px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  color: transparent; }
-
-.volume-container input[type=range]::-ms-fill-lower {
-  background: #50555C;
-  border: 0px solid #000000;
-  border-radius: 28px;
-  box-shadow: 1px 1px 1px #50555C; }
-
-.volume-container input[type=range]::-ms-fill-upper {
-  background: #50555C;
-  border: 0px solid #000000;
-  border-radius: 28px;
-  box-shadow: 1px 1px 1px #50555C; }
-
-.volume-container input[type=range]::-ms-thumb {
-  margin-top: 1px;
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 14px;
-  width: 40px;
-  border-radius: 12px;
-  background: #529DE1;
-  cursor: pointer; }
-
-.volume-container input[type=range]:focus::-ms-fill-lower {
-  background: #50555C; }
-
-.volume-container input[type=range]:focus::-ms-fill-upper {
-  background: #50555C; }
+.volume-container {
+  position: absolute;
+  right: 50px;
+  display: flex;
+  height: 50px;
+  /* All the same stuff for Firefox */
+  /* All the same stuff for IE */
+  /*TRACK*/ }
+  .volume-container .volume-icon {
+    margin-top: 12px;
+    padding: 0 15px; }
+  .volume-container .seek-input {
+    display: inline-block;
+    margin: 0px; }
+  .volume-container input[type=range] {
+    -webkit-appearance: none;
+    width: 100px;
+    background: transparent; }
+  .volume-container input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; }
+  .volume-container input[type=range]:focus {
+    outline: none; }
+  .volume-container input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent; }
+  .volume-container input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 500px;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -6px; }
+  .volume-container input[type=range]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    border-radius: 500px;
+    background: #ffffff;
+    cursor: pointer; }
+  .volume-container input[type=range]::-ms-thumb {
+    height: 15px;
+    width: 15px;
+    border-radius: 500px;
+    background: #ffffff;
+    cursor: pointer; }
+  .volume-container input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #eeeeee;
+    border-radius: 1.3px; }
+  .volume-container input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #eeeeee; }
+  .volume-container input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #eeeeee;
+    border-radius: 1.3px; }
+  .volume-container input[type=range]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent; }

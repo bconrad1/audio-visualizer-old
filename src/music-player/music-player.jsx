@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import TestSong from '../static/walkonby.mp3';
 import TestSong2 from '../static/jungle.mp3';
 import TestSong3 from '../static/test3.mp3';
+import TestSong4 from '../static/test4.mp3';
 import HeaderPlayBar from './header-play-bar/header-play-bar';
 import Visualizer from '../visualizer/visualizer';
 
@@ -79,11 +80,10 @@ class MusicPlayer extends Component {
                          played={this.state.played}
                          playedSeconds={this.state.playedSeconds}
                          seekMouseDown={seekDown}
-                         volume={this.state.volume}
                          seekMouseUp={seekUp}/>
           <div className='music-player-wrapper'>
             <ReactPlayer
-                url={TestSong}
+                url={TestSong4}
                 playing={this.state.playing}
                 onDuration={this.onDuration}
                 onSeek={e => null}

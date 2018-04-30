@@ -126,7 +126,7 @@ body {
 
 .seconds-text {
   color: $light-color;
-  //font-family: 'Inconsolata', monospace;
+  font-family: 'Roboto-Condensed';
   display: table-cell;
   font-size: 18px;
   vertical-align: middle;
@@ -162,4 +162,10 @@ body {
   position:fixed;
   top:50%;
   left:50%;
+}
+
+.volume-icon {
+  font-size: 24px;
+  color: white;
+  padding-right: 10px;
 }

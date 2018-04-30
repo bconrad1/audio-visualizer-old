@@ -2,23 +2,42 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Play from 'react-icons/lib/fa/play-circle';
 import Pause from 'react-icons/lib/fa/pause-circle';
-import VolumeBar from './volume-bar';
+import VolumeIcon from 'react-icons/lib/fa/volume-up';
 
 class HeaderPlayBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      secondsFormatted: this.formatSeconds(this.props.playedSeconds)
+      seeking: false,
+      secondsFormatted: this.formatSeconds(this.props.playedSeconds),
+      volume: 0.5
     };
   }
 
   componentWillReceiveProps() {
     this.setState({
-      secondsFormatted: this.formatSeconds(this.props.playedSeconds)
+      secondsFormatted: this.formatSeconds(this.props.playedSeconds),
     });
   }
 
+  onSeekMouseDown = () => {
+    this.setState({seeking: true});
+  };
+
+  onSeekChange = e => {
+    this.setState({volume: parseFloat(e.target.value)});
+    console.log(this.state.volume);
+  };
+
+  onSeekMouseUp = e => {
+    let audio = document.getElementsByTagName('audio')[0];
+    audio.volume = this.state.volume;
+  };
+
+  ref = volumeBar => {
+    this.volumeBar = volumeBar;
+  };
   formatSeconds = (durationIn) => {
     if (durationIn) {
       let sec = Math.ceil(durationIn);
@@ -51,7 +70,18 @@ class HeaderPlayBar extends Component {
               <div
                   className={'seconds-text'}>{this.state.secondsFormatted}</div>
             </div>
-            <VolumeBar volume={this.props.volume}/>
+            <div className={'volume-container'}>
+              <VolumeIcon className={'volume-icon'}/>
+              <input
+                  className={'seek-input'}
+                  type='range' min={0} max={1} step='any'
+                  value={this.state.volume}
+                  onChange={this.onSeekChange}
+                  onMouseDown={this.onSeekMouseDown}
+                  onMouseUp={this.onSeekMouseUp}
+                  ref={this.ref}
+              />
+            </div>
           </div>
         </div>
 
@@ -67,7 +97,6 @@ HeaderPlayBar.propTypes = {
   seek: PropTypes.func,
   seekMouseDown: PropTypes.func,
   seekMouseUp: PropTypes.func,
-  volume: PropTypes.number
 };
 
 export default HeaderPlayBar;
