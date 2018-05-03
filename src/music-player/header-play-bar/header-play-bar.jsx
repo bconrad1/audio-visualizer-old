@@ -54,7 +54,7 @@ class HeaderPlayBar extends Component {
   render() {
     return (
         <div className={'header-container'}>
-          <div className={'header-play-bar'}>
+          <div className={`header-play-bar ${this.props.playing ? 'header-play-bar-hide' : ''}`}>
             {this.props.playing ? <Pause onClick={this.props.onPlayPause}
                                          className={'play-btn grow'}/> : <Play
                 onClick={this.props.onPlayPause} className={'play-btn grow'}/>}

@@ -73,14 +73,14 @@ class MusicPlayer extends Component {
     return (
         <Fragment>
           <HeaderPlayBar onPlayPause={playPause}
-                         onVisChange={visChanged}
-                         currentVis={this.state.currentVis}
-                         seek={seek}
-                         playing={this.state.playing}
-                         played={this.state.played}
-                         playedSeconds={this.state.playedSeconds}
-                         seekMouseDown={seekDown}
-                         seekMouseUp={seekUp}/>
+                                    onVisChange={visChanged}
+                                    currentVis={this.state.currentVis}
+                                    seek={seek}
+                                    playing={this.state.playing}
+                                    played={this.state.played}
+                                    playedSeconds={this.state.playedSeconds}
+                                    seekMouseDown={seekDown}
+                                    seekMouseUp={seekUp}/>
           <div className='music-player-wrapper'>
             <ReactPlayer
                 url={TestSong4}

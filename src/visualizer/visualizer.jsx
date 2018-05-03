@@ -7,7 +7,7 @@ class Visualizer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 1
+      width: 1,
     };
 
     this.canvasRef = React.createRef();
@@ -91,7 +91,8 @@ class Visualizer extends Component {
         default:
           radius = -200;
           barLength = 0.8;
-          innerRadius = (-radius - 25);0
+          innerRadius = (-radius - 25);
+          0;
           innerHeight = 2;
           break;
       }
@@ -106,6 +107,8 @@ class Visualizer extends Component {
 
       ctx.beginPath();
       ctx.arc(0, 0, -radius, 0, 2 * Math.PI);
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = '#FFFFFF';
       ctx.strokeStyle = '#fff5cc';
       ctx.lineWidth = 2;
       ctx.stroke();
@@ -128,7 +131,7 @@ class Visualizer extends Component {
                       width={window.innerWidth}
                       height={window.innerHeight}
                       className={'audio-canvas'}/>
-
+              <div className={'inner-circle'}/>
             </div>
           </div>
         </Fragment>
@@ -139,5 +142,5 @@ class Visualizer extends Component {
 export default Visualizer;
 
 Visualizer.proptypes = {
-  currentVis: PropTypes.func
+  currentVis: PropTypes.func,
 };

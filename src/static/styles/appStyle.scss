@@ -3,32 +3,50 @@
 
 body, html {
   height: 100%;
-  overflow:hidden;
+  overflow: hidden;
   font-family: 'Roboto-Condensed', sans-serif;
 }
 
 body {
-  background: linear-gradient(218deg, #010101, #1c2d38, #08283e);
+  background: linear-gradient(218deg, #000001, #010101, #1a2933, #030f17);
   background-size: 600% 600%;
 
   -webkit-animation: AnimationName 30s ease infinite;
   -moz-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite;
+  animation: AnimationName 60s ease infinite;
 
   @-webkit-keyframes AnimationName {
-    0%{background-position:0% 22%}
-    50%{background-position:100% 79%}
-    100%{background-position:0% 22%}
+    0% {
+      background-position: 0% 22%
+    }
+    50% {
+      background-position: 100% 79%
+    }
+    100% {
+      background-position: 0% 22%
+    }
   }
   @-moz-keyframes AnimationName {
-    0%{background-position:0% 22%}
-    50%{background-position:100% 79%}
-    100%{background-position:0% 22%}
+    0% {
+      background-position: 0% 22%
+    }
+    50% {
+      background-position: 100% 79%
+    }
+    100% {
+      background-position: 0% 22%
+    }
   }
   @keyframes AnimationName {
-    0%{background-position:0% 22%}
-    50%{background-position:100% 79%}
-    100%{background-position:0% 22%}
+    0% {
+      background-position: 0% 22%
+    }
+    50% {
+      background-position: 100% 79%
+    }
+    100% {
+      background-position: 0% 22%
+    }
   }
 }
 
@@ -59,6 +77,10 @@ body {
 
 .header-play-bar {
   height: 50px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -66,6 +88,20 @@ body {
   -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, .5);
   -moz-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, .5);
   box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, .5);
+  margin-bottom: 20px;
+
+}
+
+.header-play-bar-hide {
+  top: -40px;
+  -webkit-transition: top 1s; /* Safari */
+  transition: top 1s;
+
+  &:hover {
+    top: 0;
+    -webkit-transition: top 0.3s; /* Safari */
+    transition: top 0.3s;
+  }
 }
 
 .play-btn {
@@ -99,9 +135,9 @@ body {
 .vis-select-container {
   position: absolute;
   right: 25px;
-  height:50px;
+  height: 50px;
   display: table;
-  padding-top:13px;
+  padding-top: 13px;
 }
 
 .vis-select {
@@ -112,7 +148,7 @@ body {
 
 .vis-select-text {
   color: white;
-  font-size:20px;
+  font-size: 20px;
   //font-family: 'Inconsolata', monospace;
   display: inline-block;
 
@@ -120,13 +156,13 @@ body {
 
 .switch-container {
   display: table-cell;
-  width:48px;
-  padding:0 10px;
+  width: 48px;
+  padding: 0 10px;
 }
 
 .seconds-text {
   color: $light-color;
-  font-family: 'Roboto-Condensed';
+  font-family: 'Inconsolata';
   display: table-cell;
   font-size: 18px;
   vertical-align: middle;
@@ -143,7 +179,7 @@ body {
   margin: 0 25px;
 }
 
-.floating-particles{
+.floating-particles {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -151,17 +187,18 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: -9999;
 }
 
-.scrolling-text{
-  position:fixed;
+.scrolling-text {
+  position: fixed;
   top: 50%;
 }
 
-.playing-container{
-  position:fixed;
-  top:50%;
-  left:50%;
+.playing-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
 }
 
 .volume-icon {
@@ -169,3 +206,47 @@ body {
   color: white;
   padding-right: 10px;
 }
+
+.github-link {
+  font-family: 'Inconsolata';
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}
+
+.github-container {
+  position: absolute;
+  z-index: 9999999;
+  bottom: 25px;
+  right: 50px;
+}
+
+/****FileUploader****/
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.btn {
+  width: 150px;
+  height: 40px;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(245, 240, 200);
+  border-radius: 5px;
+  font-family: Inconsolata;
+  margin: 10px;
+  font-size: 16px;
+  z-index: 9999999;
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    background: rgba(245, 240, 200, .2);
+  }
+}
+
