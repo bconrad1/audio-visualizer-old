@@ -217,11 +217,72 @@ body {
   color: white;
   padding-right: 10px; }
 
+/****FileUploader****/
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column; }
+  .form-container .sample-btn-container {
+    display: inline-block;
+    margin-right: 10px;
+    -webkit-transform: translateY(-50px); }
+  .form-container .chose-btn-container {
+    display: inline-block;
+    margin-left: 10px;
+    -webkit-transform: translateY(50px); }
+  .form-container .diagonal-line {
+    width: 2px;
+    height: 300px;
+    background-color: rgba(245, 240, 200, 0.5);
+    -webkit-transform: rotate(45deg);
+    margin: 0 45px;
+    display: inline-block; }
+  .form-container .file-upload-text {
+    font-size: 48px;
+    font-family: Inconsolata;
+    color: white;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(245, 240, 200, 0.5); }
+  .form-container .btn-container {
+    width: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .form-container .btn {
+    width: 200px;
+    height: 55px;
+    color: white;
+    background: transparent;
+    border: 2px solid #f5f0c8;
+    border-radius: 5px;
+    font-family: Inconsolata;
+    font-size: 24px;
+    z-index: 9999999;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0 10px; }
+    .form-container .btn:hover {
+      cursor: pointer;
+      border: 2px solid white;
+      background: rgba(245, 240, 200, 0.2); }
+  .form-container .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }
+
+/***Extra Links and Buttonst***/
 .github-link {
   font-family: 'Inconsolata';
   font-size: 16px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(245, 240, 200, 0.6);
   text-decoration: none; }
 
 .github-container {
@@ -230,25 +291,13 @@ body {
   bottom: 25px;
   right: 50px; }
 
-/****FileUploader****/
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; }
-
-.btn {
-  width: 150px;
-  height: 40px;
-  color: white;
-  background: transparent;
-  border: 2px solid #f5f0c8;
-  border-radius: 5px;
-  font-family: Inconsolata;
-  margin: 10px;
-  font-size: 16px;
-  z-index: 9999999; }
-  .btn:hover {
-    cursor: pointer;
-    border: 2px solid white;
-    background: rgba(245, 240, 200, 0.2); }
+.back-btn-container {
+  position: absolute;
+  z-index: 9999999;
+  bottom: 25px;
+  left: 50px; }
+  .back-btn-container .back-btn {
+    font-size: 32px;
+    color: rgba(245, 240, 200, 0.6); }
+    .back-btn-container .back-btn:hover {
+      color: white; }

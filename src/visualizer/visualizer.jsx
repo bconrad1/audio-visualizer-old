@@ -7,7 +7,7 @@ class Visualizer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 1,
+      width: 1
     };
 
     this.canvasRef = React.createRef();
@@ -26,6 +26,7 @@ class Visualizer extends Component {
     let width = window.innerWidth;
 
     let audio = document.getElementsByTagName('audio')[0];
+
     audio.volume = 0.5;
     audio.crossOrigin = 'anonymous';
     let audioSrc = context.createMediaElementSource(audio);
@@ -92,7 +93,6 @@ class Visualizer extends Component {
           radius = -200;
           barLength = 0.8;
           innerRadius = (-radius - 25);
-          0;
           innerHeight = 2;
           break;
       }
@@ -142,5 +142,5 @@ class Visualizer extends Component {
 export default Visualizer;
 
 Visualizer.proptypes = {
-  currentVis: PropTypes.func,
+  currentVis: PropTypes.func
 };

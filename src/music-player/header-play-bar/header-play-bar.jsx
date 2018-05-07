@@ -9,28 +9,26 @@ class HeaderPlayBar extends Component {
     super(props);
 
     this.state = {
-      seeking: false,
-      secondsFormatted: this.formatSeconds(this.props.playedSeconds),
-      volume: 0.5
+      secondsFormatted: this.formatSeconds(this.props.played),
+      volume: 0.5,
+      played: 0
     };
   }
 
   componentWillReceiveProps() {
-    this.setState({
-      secondsFormatted: this.formatSeconds(this.props.playedSeconds),
-    });
+    if (!this.props.seeking) {
+      this.setState({
+        played: this.props.playedSeconds,
+        secondsFormatted: this.formatSeconds(this.props.playedSeconds)
+      });
+    }
   }
 
-  onSeekMouseDown = () => {
-    this.setState({seeking: true});
-  };
-
-  onSeekChange = e => {
+  onVolumeChange = e => {
     this.setState({volume: parseFloat(e.target.value)});
-    console.log(this.state.volume);
   };
 
-  onSeekMouseUp = e => {
+  onVolumeMouseUp = e => {
     let audio = document.getElementsByTagName('audio')[0];
     audio.volume = this.state.volume;
   };
@@ -52,19 +50,21 @@ class HeaderPlayBar extends Component {
   };
 
   render() {
+    let {duration, playing, onPlayPause, seek, seekMouseDown, seekMouseUp} = this.props;
+
     return (
         <div className={'header-container'}>
-          <div className={`header-play-bar ${this.props.playing ? 'header-play-bar-hide' : ''}`}>
-            {this.props.playing ? <Pause onClick={this.props.onPlayPause}
-                                         className={'play-btn grow'}/> : <Play
-                onClick={this.props.onPlayPause} className={'play-btn grow'}/>}
+          <div className={`header-play-bar ${playing ? 'header-play-bar-hide' : ''}`}>
+            {playing ? <Pause onClick={onPlayPause}
+                              className={'play-btn grow'}/> : <Play
+                onClick={onPlayPause} className={'play-btn grow'}/>}
             <input
                 className={'seek-input'}
-                type='range' min={0} max={1} step='any'
-                value={this.props.played}
-                onChange={this.props.seek}
-                onMouseDown={this.props.seekMouseDown}
-                onMouseUp={this.props.seekMouseUp}
+                type='range' min={0} max={duration} step='any'
+                value={this.state.played}
+                onChange={seek}
+                onMouseDown={seekMouseDown}
+                onMouseUp={seekMouseUp}
             />
             <div className={'seconds-container'}>
               <div
@@ -76,9 +76,9 @@ class HeaderPlayBar extends Component {
                   className={'seek-input'}
                   type='range' min={0} max={1} step='any'
                   value={this.state.volume}
-                  onChange={this.onSeekChange}
+                  onChange={this.onVolumeChange}
                   onMouseDown={this.onSeekMouseDown}
-                  onMouseUp={this.onSeekMouseUp}
+                  onMouseUp={this.onVolumeMouseUp}
                   ref={this.ref}
               />
             </div>
@@ -90,6 +90,7 @@ class HeaderPlayBar extends Component {
 }
 
 HeaderPlayBar.propTypes = {
+  duration: PropTypes.number,
   onPlayPause: PropTypes.func,
   played: PropTypes.number,
   playedSeconds: PropTypes.number,
@@ -97,6 +98,7 @@ HeaderPlayBar.propTypes = {
   seek: PropTypes.func,
   seekMouseDown: PropTypes.func,
   seekMouseUp: PropTypes.func,
+  seeking: PropTypes.bool
 };
 
 export default HeaderPlayBar;
