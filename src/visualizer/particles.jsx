@@ -19,15 +19,6 @@ class Particles extends Component {
     let particles = [];
     let numParticles = 75;
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    window.addEventListener('resize', resizeCanvas, false);
-
     function getColor() {
       let randomOpacity = Math.random();
 
@@ -72,7 +63,7 @@ class Particles extends Component {
     function loop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (var i = 0; i < numParticles; i++) {
+      for (let i = 0; i < numParticles; i++) {
         particles[i].Update();
         particles[i].Draw(ctx);
       }
@@ -82,6 +73,13 @@ class Particles extends Component {
     for (let i = 0; i < numParticles; i++) {
       particles.push(new Particle());
     }
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas, false);
 
     loop();
   };

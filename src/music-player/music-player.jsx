@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import HeaderPlayBar from './header-play-bar/header-play-bar';
 import Visualizer from '../visualizer/visualizer';
 
-import TestSong from '../static/walkonby.mp3';
-import TestSong2 from '../static/jungle.mp3';
-import TestSong3 from '../static/test3.mp3';
-import TestSong4 from '../static/test4.mp3';
+import SampleSong from '../static/dream-adventure.mp3';
 
 class MusicPlayer extends Component {
   static propTypes = {
@@ -40,7 +37,7 @@ class MusicPlayer extends Component {
     if (files) {
       audio.src = URL.createObjectURL(this.props.songs[0]);
     } else {
-      audio.src = TestSong3;
+      audio.src = SampleSong;
     }
 
     audio.addEventListener('timeupdate', () => {
