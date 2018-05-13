@@ -15,7 +15,7 @@ class MusicPlayer extends Component {
     super(props);
 
     this.state = {
-      playing: false,
+      playing: true,
       duration: 0,
       played: 0,
       seeking: false,
@@ -111,7 +111,7 @@ class MusicPlayer extends Component {
                          seekMouseUp={seekUp}/>
           <div className='music-player-wrapper'>
             <audio id='audio' controls ref={this.ref}
-                   ontimeupdate={this.onAudioChange}/>
+                   ontimeupdate={this.onAudioChange} loop/>
           </div>
           <Visualizer currentVis={this.state.currentVis}
                       songs={this.props.songs}/>
