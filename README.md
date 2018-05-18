@@ -6,6 +6,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 # https://react-music-visualizer.herokuapp.com/
 
 ## Info
+The app will be slow to load as its on Heroku free tier and needs to be spun up. 
 
 This was a more of a side project just to play around with Canvas and React. The project makes use of the HTML5 Audio element. 
 
