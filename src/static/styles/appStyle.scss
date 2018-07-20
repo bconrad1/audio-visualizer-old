@@ -5,17 +5,20 @@ body, html {
   height: 100%;
   overflow: hidden;
   font-family: 'Roboto-Condensed', sans-serif;
+  min-width: 650px;
+  width: 100%;
+
 }
 
 body {
   background: linear-gradient(218deg, #000001, #010101, #1a2933, #030f17);
   background-size: 600% 600%;
 
-  -webkit-animation: AnimationName 30s ease infinite;
-  -moz-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 60s ease infinite;
+  -webkit-animation: GradiantAnimation 30s ease infinite;
+  -moz-animation: GradiantAnimation 30s ease infinite;
+  animation: GradiantAnimation 60s ease infinite;
 
-  @-webkit-keyframes AnimationName {
+  @-webkit-keyframes GradiantAnimation {
     0% {
       background-position: 0% 22%
     }
@@ -26,7 +29,7 @@ body {
       background-position: 0% 22%
     }
   }
-  @-moz-keyframes AnimationName {
+  @-moz-keyframes GradiantAnimation {
     0% {
       background-position: 0% 22%
     }
@@ -37,7 +40,7 @@ body {
       background-position: 0% 22%
     }
   }
-  @keyframes AnimationName {
+  @keyframes GradiantAnimation {
     0% {
       background-position: 0% 22%
     }
@@ -207,6 +210,12 @@ body {
   padding-right: 10px;
 }
 
+.volume-container {
+  @media only screen and (max-width: 600px) {
+    display: none !important;
+  }
+}
+
 /****FileUploader****/
 
 .form-container {
@@ -225,7 +234,7 @@ body {
     display: inline-block;
     margin-left: 10px;
     -webkit-transform: translateY(50px);
-}
+  }
   .diagonal-line {
     width: 2px;
     height: 300px;
@@ -259,7 +268,7 @@ body {
     font-family: Inconsolata;
     font-size: 24px;
     z-index: 9999999;
-    text-align:center;
+    text-align: center;
     display: table-cell;
     vertical-align: middle;
     margin: 0 10px;
@@ -280,51 +289,53 @@ body {
     z-index: -1;
   }
 
-
 }
 
-  /***Extra Links and Buttonst***/
+/***Extra Links and Buttonst***/
 
-  .footer-link {
-    font-family: 'Inconsolata';
-    font-size: 16px;
-    font-weight: 700;
+.footer-link {
+  font-family: 'Inconsolata';
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(245, 240, 200, 0.6);
+  text-decoration: none;
+}
+
+.github-container {
+  position: absolute;
+  z-index: 9999999;
+  bottom: 25px;
+  right: 50px;
+}
+
+.sample-song-container {
+  position: absolute;
+  z-index: 9999999;
+  bottom: 25px;
+  width: 250px;
+  text-align: center;
+  left: calc(50% - 125px);
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+.back-btn-container {
+
+  position: absolute;
+  z-index: 9999999;
+  bottom: 25px;
+  left: 50px;
+
+  .back-btn {
+    font-size: 32px;
     color: rgba(245, 240, 200, 0.6);
-    text-decoration: none;
-  }
-
-  .github-container {
-    position: absolute;
-    z-index: 9999999;
-    bottom: 25px;
-    right: 50px;
-  }
-
-  .sample-song-container{
-    position: absolute;
-    z-index: 9999999;
-    bottom: 25px;
-    width:250px;
-    text-align:center;
-    left:calc(50% - 125px);
-  }
-
-
-  .back-btn-container {
-
-    position: absolute;
-    z-index: 9999999;
-    bottom: 25px;
-    left: 50px;
-
-    .back-btn {
-      font-size: 32px;
-      color: rgba(245, 240, 200, 0.6);
-      &:hover {
-        color: white;
-      }
+    &:hover {
+      color: white;
     }
   }
+}
 
 
 

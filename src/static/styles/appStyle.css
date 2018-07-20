@@ -55,7 +55,9 @@ input {
 body, html {
   height: 100%;
   overflow: hidden;
-  font-family: 'Roboto-Condensed', sans-serif; }
+  font-family: 'Roboto-Condensed', sans-serif;
+  min-width: 650px;
+  width: 100%; }
 
 body {
   background: linear-gradient(218deg, #000001, #010101, #1a2933, #030f17);
@@ -66,27 +68,27 @@ body {
 
 @-webkit-keyframes AnimationName {
   0% {
-    background-position: 0 22%; }
+    background-position: 0% 22%; }
   50% {
     background-position: 100% 79%; }
   100% {
-    background-position: 0 22%; } }
+    background-position: 0% 22%; } }
 
 @-moz-keyframes AnimationName {
   0% {
-    background-position: 0 22%; }
+    background-position: 0% 22%; }
   50% {
     background-position: 100% 79%; }
   100% {
-    background-position: 0 22%; } }
+    background-position: 0% 22%; } }
 
 @keyframes AnimationName {
   0% {
-    background-position: 0 22%; }
+    background-position: 0% 22%; }
   50% {
     background-position: 100% 79%; }
   100% {
-    background-position: 0 22%; } }
+    background-position: 0% 22%; } }
 
 .App {
   height: inherit; }
@@ -217,6 +219,10 @@ body {
   color: white;
   padding-right: 10px; }
 
+@media only screen and (max-width: 600px) {
+  .volume-container {
+    display: none !important; } }
+
 /****FileUploader****/
 .form-container {
   display: flex;
@@ -298,6 +304,9 @@ body {
   width: 250px;
   text-align: center;
   left: calc(50% - 125px); }
+  @media only screen and (max-width: 600px) {
+    .sample-song-container {
+      display: none; } }
 
 .back-btn-container {
   position: absolute;

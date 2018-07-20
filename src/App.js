@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, {Component} from 'react';
 import './App.scss';
-import MusicPlayer from './music-player/music-player';
-import Particles from './visualizer/particles';
+import MusicPlayer from './components/music-player/music-player';
+import Particles from './components/visualizer/particles';
 import './static/styles/rangeStyle.css';
-import FileUploader from './file-upload/FileUploader';
-import {Footer} from './footer/footer';
+import FileUploader from './components/file-upload/FileUploader';
+import {Footer} from './components/footer/footer';
 
 class App extends Component {
   constructor(props) {
