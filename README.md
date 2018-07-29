@@ -12,6 +12,5 @@ This was a more of a side project just to play around with Canvas and React. The
 
 # ToDo
 
-* Make header bar responsive for mobile.
-* Potentially hook up Redux to stop having to pass props down to Children. 
 * Have canvas clear and re-render on resize so particles spread out when original canvas is smaller than resize. 
+* Hook up Redux. 
