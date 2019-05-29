@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import '../../static/styles/appStyle.css';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 class Visualizer extends Component {
   constructor(props) {
@@ -17,6 +18,8 @@ class Visualizer extends Component {
   componentDidMount() {
     this.initVisualization();
   }
+
+
 
   initVisualization = () => {
     let context = new AudioContext();
@@ -55,8 +58,11 @@ class Visualizer extends Component {
         let barHeight = -(freqData[i] / 0.7);
         ctx.fillRect(barX, canvas.height / 2, barWidth, barHeight);
         ctx.fillRect(barX, ((canvas.height / 2) - 1), barWidth,
-            (barHeight * -1));
+          (barHeight * -1));
       }
+    }
+    function normaliseValues(min, max, val) {
+        return (val - min) / (max - min);
     }
 
     function renderCircle() {
@@ -73,34 +79,32 @@ class Visualizer extends Component {
       ctx.translate(window.innerWidth - 100, window.innerHeight);
       ctx.fillStyle = '#ffffff';
 
-      let radius, barLength, innerRadius, innerHeight;
-
+      let radius, innerHeight;
+      const maxVal = _.max(freqData);
+      const minVal = _.min(freqData);
+      const radiusDiff = freqData[255] * 0.2;
       switch (true) {
         case (width >= 1200):
-          radius = -400;
-          barLength = 0.6;
-          innerRadius = (-radius - 100);
+          radius = -300 - radiusDiff;
           innerHeight = 1;
           break;
         case (width > 750 && width < 1200):
-          radius = -300;
-          barLength = 0.7;
-          innerRadius = (-radius - 50);
+          radius = -200 - radiusDiff;
           innerHeight = 1.5;
           break;
         default:
-          radius = -200;
-          barLength = 0.8;
-          innerRadius = (-radius - 25);
+          radius = -100 - radiusDiff;
           innerHeight = 2;
           break;
       }
+
+
       //all freq
       for (let i = 0; i < maxBinCount; i++) {
-        let value = freqData[i];
+        let value = normaliseValues(minVal, maxVal, freqData[i]) * 100;
         ctx.fillStyle = '#fffae6';
-        let barHeight = -value / barLength;
-        ctx.fillRect(0, radius, 4, barHeight);
+        let barHeight = -value * 3;
+        ctx.fillRect(0, radius, 3, barHeight);
         ctx.rotate((180 / 128) * Math.PI / 180);
       }
 
@@ -123,17 +127,17 @@ class Visualizer extends Component {
 
   render() {
     return (
-        <Fragment>
-          <div className={'canvas-container'}>
-            <div className={'vis-container'}>
-              <canvas ref={this.canvasRef}
-                      width={window.innerWidth}
-                      height={window.innerHeight}
-                      className={'audio-canvas'}/>
-              <div className={'inner-circle'}/>
-            </div>
+      <Fragment>
+        <div className={'canvas-container'}>
+          <div className={'vis-container'}>
+            <canvas ref={this.canvasRef}
+              width={window.innerWidth}
+              height={window.innerHeight}
+              className={'audio-canvas'} />
+            <div className={'inner-circle'} />
           </div>
-        </Fragment>
+        </div>
+      </Fragment>
     );
   }
 }
